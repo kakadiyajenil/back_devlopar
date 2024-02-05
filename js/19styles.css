@@ -1,0 +1,71 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap'); */
+
+.calculator {
+    padding: 10px;
+    border-radius: 1em;
+    height: 380px;
+    width: 400px;
+    margin: auto;
+    background-color: #08080821;
+    box-shadow: rgba(43, 25, 17, 0.626) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.display-box {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #dcdbe1;
+    border: solid rgb(35, 20, 20) 0.5px;
+    color: rgb(19, 19, 19);
+    border-radius: 5px;
+    width: 100%;
+    height: 65%;
+}
+
+#btn {
+    background-color: #0202025b;
+}
+
+input[type=button] {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #040e0bec;
+    color: rgb(252, 247, 247);
+    border: solid black 0.5px;
+    width: 100%;
+    border-radius: 5px;
+    height: 70%;
+    outline: none;
+}
+
+input:active[type=button] {
+    background: #0b0b0b;
+    -webkit-box-shadow: inset 0px 0px 5px #a85e5e;
+    -moz-box-shadow: inset 0px 0px 5px #7b3f3f;
+    box-shadow: inset 0px 0px 5px #451919;
+}
+
+.spinner {
+    width: 3em;
+    height: 3em;
+    cursor: not-allowed;
+    border-radius: 50%;
+    border: 2px solid #444;
+    box-shadow: -10px -10px 10px #6359f8, 0px -10px 10px 0px #9c32e2, 10px -10px 10px #f36896, 10px 0 10px #ff0b0b, 10px 10px 10px 0px#ff5500, 0 10px 10px 0px #ff9500, -10px 10px 10px 0px #ffb700;
+    animation: rot55 0.7s linear infinite;
+  }
+  
+  .spinnerin {
+    border: 2px solid #444;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  @keyframes rot55 {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
