@@ -1,0 +1,15 @@
+# NodeJS Doc
+
+# *What is NodeJS?*
+
+Node.js is an open-source, server-side JavaScript runtime environment built on Chrome's V8 JavaScript engine. It allows developers to run JavaScript code outside a web browser, enabling them to build scalable and efficient network applications.
+
+Node.js utilizes an event-driven, non-blocking I/O model, which can handle multiple concurrent connections and perform asynchronous operations efficiently. This design makes it particularly well-suited for building real-time applications, such as chat servers, streaming platforms, or any application that requires handling a large number of concurrent connections.
+
+One of the key advantages of Node.js is its ability to use JavaScript on both the client-side and server side, enabling developers to share code and easily transition between different parts of the application. This streamlines the development process and promotes code reusability.
+
+Initial Release Date: *27 May 2009*
+
+License: *MIT license*
+
+Operating System: *Microsoft Windows, Linux, SmartOS, MacOS, FreeBSD, OpenBSD, IBM AIX*
