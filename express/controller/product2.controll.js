@@ -1,21 +1,24 @@
 const Product = require('../model/product.model');
+// require('../helpers/verifyToken')
 
 exports.addProducts = async(req, res) => {
     try {
         const{title, description, price, category} = req.body;
+        console.log(req.file);
         let newProduct = await Product.create({
             title,
             description,
             price,
             category
         });
+        console.log(newProduct);
         newProduct.save();
         res.status(201).json({product: newProduct, meassage : `Product Added SuccesFully`});
     } catch (error) {
         console.log(error);
         res.status(500).json({message : `Internal Server Error`});
     }
-};
+}; 
 
 exports.getAllProducts = async(req, res) => {
     try {
@@ -64,9 +67,10 @@ exports.deleteProduct = async(req, res) => {
             return res.status(404).json({message : `No Product Found With The Given Id.`});
         }
         product = await Product.findOneAndUpdate({_id:product._id}, {isDelete: true},{new : true});
-        res.status(200).json({product,message :` This Product will be Deleted.`});
+        res.status(200).json({product,message : `This Product will be Deleted.`});
     } catch (error) {
         console.log(error);
-        res.status(500).json({message :` Internal Server Error`});
+        res.status(500).json({message : `Internal Server Error`});
     }
 }
+

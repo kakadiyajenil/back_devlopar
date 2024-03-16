@@ -1,54 +1,33 @@
-// const express = require('express');
-// const app = express();         // server create
-// const port = 5050;
-// const morgan = require('morgan');
-// const path = require('path');
-
-// // middleware
-// let myFun = (req, res, next) => {
-//     // console.log(req.query);
-//     if ((req.query.age) >= 18) {
-//         next();
-//     } else {
-//         res.send('Sorry! You have under below 18');
-
-//     }
-// }
-
-// // app.use(myFun);     // Application Level middleware
-// app.use(express.json());     // built-in
-// app.use(express.urlencoded({ extended: true }));
-// app.use('/hello',express.static(path.join(__dirname, 'public')));
-
-// app.use(morgan('dev'));
-// app.get('/', myFun, (req, res) => {
-//     res.send('Welcome to Express JS');
-// });
-// app.post('/', (req, res) => {
-//     console.log(req.body);
-//     res.send('Post method');
-
-// });
-
-// app.listen(port, () => {
-//     console.log(`Server start at http://localhost:5050`);
-// })
-
-
 const express = require('express');
- const app = express();         // server create
- const port = 5050;
- const morgan = require('morgan');
- const mongoose = require('mongoose');
-//   
+const app = express();
+const port = 7000;
+const morgan = require('morgan');
 
- //Middleware
- app.use(express.json());
- app.use(morgan('dev'));
+// middleware
+let myFun = (req, res, next) => {
+    // console.log(req.query);
 
- const productRoutes = require('./Router/product.routes');
- app.use('/products', productRoutes);
+    if((req.query.age) >= 18){
+        next();
+    }else{
+        res.send('Sorry! You are not allowed to enter this page');
+    }
+}
 
- app.listen(port, () => {
-    console.log(`Server start at http://localhost:5050`);
- });
+// app.use(myFun);
+app.use(express.json()); // for parsing application/json responses from express server and sending them to express server with express middleware function
+app.use(morgan("dev")); // development server for logging requests tomorgan server instead  of the console 
+// app.use(morgan("combined")) //combined middle handler will log all requests and responses tomorgan and send them tomorgan middle handler with response headers and body
+// app.use(morgan("common")) // common is the default one used when combined option is not specified in config file.
+// app.use(morgan("short")); // short middle handler will log all requests and responses tomorgan and send them to the stream.
+// app.use(morgan("tiny")); // tiny middle handler will log all requests and responses tomorgan and send them to the stream.
+app.get('/',myFun,(req,res)=>{
+    res.send('Welcome To Express JS');
+});
+
+app.post('/',(req,res)=>{
+    res.send('Post Method')
+});
+app.listen(port,()=>{
+    console.log(`Server Start At http://localhost:${port}`);
+});
