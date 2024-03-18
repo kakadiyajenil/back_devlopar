@@ -1,11 +1,12 @@
-const mongoose = require('mongoose');
+const mongoose  = require('mongoose');
 
-const userSchema = mongoose.Schema({
+const userSchema = mongoose.Schema ({
+
     firstName : String,
     lastName : {
         type : String
     },
-    gender : {
+    gender : { 
         type : String,
         enum : ['Male','Female']
     },
@@ -16,14 +17,11 @@ const userSchema = mongoose.Schema({
         type : String
     },
     age : {
-        type : Number
-    },
-    isDelete: {
-        type: Boolean,
-        default: false
-    },
-    newPassword: {
-        type : String
+        type : String 
+    },  
+    isDelete : {
+        type :Boolean,
+        default : false 
     }
 });
 

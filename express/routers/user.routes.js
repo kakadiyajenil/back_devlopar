@@ -1,29 +1,18 @@
 const express = require('express');
-const usersRoutes = express.Router();
-const {addUsers, 
-    getAllUsers,
-    getUsers, 
-    replaceUsers, 
-    updateUsers, 
-    deleteUsers
-} = require('../controller/user.controll');
+const userRoutes = express.Router();
+const {verifyToken} = require('../helpers/verifyToken')
+const {registerUser,
+    loginUser,
+    getAllUser,
+    getUser,
+    updateUser,
+    deleteUser} = require('../controller/user.controll');
 
-// Create Users
-usersRoutes.post('/',addUsers);
+userRoutes.post('/register-user',registerUser);
+userRoutes.post('/login-user',loginUser);
+userRoutes.get('/get-all-user',verifyToken,getAllUser);
+userRoutes.get('/get-user',verifyToken,getUser);
+userRoutes.put('/update-user',updateUser);
+userRoutes.delete('/delete-user',deleteUser);
 
-// Get All Users
-usersRoutes.get('/',getAllUsers);
-
-// Get Specific User
-usersRoutes.get('/single-user',getUsers);
-
-// Replace Specific User
-usersRoutes.put('/replace-user',replaceUsers);
-
-// Update Specific User
-usersRoutes.patch('/update-user',updateUsers);
-
-// Delete Specific User
-usersRoutes.delete('/delete-user',deleteUsers);
-
-module.exports = usersRoutes;
+module.exports = userRoutes ;

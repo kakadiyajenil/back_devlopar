@@ -3,38 +3,33 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT;
 const morgan = require('morgan');
+
 const mongoose = require('mongoose');
-// Database Connection
-async function main(){
-    // await mongoose.connect('mongodb://127.0.0.1:27017/jenil');
+// Database connection
+
+async function main() {
     await mongoose.connect(process.env.MONGO_DB_URL);
 }
 main()
-.then(()=>console.log('DB is Connected SuccessFully.......'))
-.catch( err =>{console.log(err)});
+.then(()=>console.log('DB is connected...'))
+.catch(err => console.log(err));
 
-// Middlware
+// MiddleWare 
 app.use(express.json());
 app.use(morgan('dev'));
 
-// Product Server
-// const productRoutes = require('./routers/product.routes');
-// app.use('/products', productRoutes);
+// const cartRoutes = require('./routers/cart.routes');
+// app.use('/api/cart',cartRoutes);
 
-// User Server
-// const userRoutes = require('./routers/user.routes');
-// app.use('/users',userRoutes)
+const userRoutes= require('./routers/user.routes');
+app.use('/api/user',userRoutes);    
 
-// User Server (mongoosh)
-const userRoutes = require('./Routers/users2.routes');
-const productRoutes = require('./Routers/product2.routes');
-const cartRoutes = require('./routers/cart.routes');
-const orderRoutes = require('./routers/order.routes');
-app.use('/api/user',userRoutes);
-app.use('/api/product',productRoutes);
-app.use('/api/cart',cartRoutes);
-app.use('/api/order',orderRoutes);
+const productRoutes = require('./routers/product.routes');
+app.use('/api/products',productRoutes);
 
-app.listen(port,()=>{
-    console.log(`Server Start at http://localhost:${port}`);
-}); 
+// const orderRoutes = require('./Routes/order.Routes');
+// app.use('/api/order',orderRoutes);
+
+app.listen(port,()=> {
+    console.log(`Server start at http://localhost:${port}`);
+})
