@@ -40,8 +40,8 @@ exports.loginUser = async (req , res) =>  {
       if(!checkPassword) {
         return res.status(400).json({ message : 'Password Is Not Match...'})
       }
-      let token = jwt.sign({ userId : user._id}, 'SkillQode');
-      res.status(200).json({ token, message : 'Login SucessFully'})
+      let token = jwt.sign({ userId : user._id},'Skillqode');
+      res.status(200).json({ token, message : 'Login SucessFully'});
      }catch (error)
      {
         console.log(error);
@@ -62,11 +62,11 @@ exports.getAllUser = async (req,res) => {
 
 exports.getUser = async (req,res) => {
   try {
-    let userId = req.user._Id ;
+    let userId = req.user._id ;
     // let user = await User.findById(userId);
     let user = await User.findOne({_id : userId ,isDelete : false});
     if(!user){
-      return res.status(404).json({ Message : "User Not Found"});
+      return res.status(404).json({ Message : `User Not Found ${console.error()}`});
     }
     res.status(200).json(user);
   }catch(error){
@@ -79,7 +79,7 @@ exports.getUser = async (req,res) => {
 exports.updateUser = async (req,res) => {
   try {
     let userId = req.query.userId ;
-    let user = await User.findById(userId);
+    let user = await User.findById(userId); 
     // let user await User.findById(userId);
 
     if(!user){

@@ -13,7 +13,7 @@ exports.verifyToken = async (req,res,next) => {
     if(token === undefined)
        return res.status(404).json({message : 'Unauthorization'});
      else {
-        let {userId} = jwt.verify(token, 'SkillQode');
+        let {userId} = jwt.verify(token,'Skillqode');
         console.log(userId)
         let user = await User.findById(userId);
         console.log(user);

@@ -18,8 +18,8 @@ main()
 app.use(express.json());
 app.use(morgan('dev'));
 
-// const cartRoutes = require('./routers/cart.routes');
-// app.use('/api/cart',cartRoutes);
+const cartRoutes = require('./routers/cart.routes');
+app.use('/api/cart',cartRoutes);
 
 const userRoutes= require('./routers/user.routes');
 app.use('/api/user',userRoutes);    
@@ -27,8 +27,8 @@ app.use('/api/user',userRoutes);
 const productRoutes = require('./routers/product.routes');
 app.use('/api/products',productRoutes);
 
-// const orderRoutes = require('./Routes/order.Routes');
-// app.use('/api/order',orderRoutes);
+const orderRoutes = require('./routers/order.routes');
+app.use('/api/order',orderRoutes);
 
 app.listen(port,()=> {
     console.log(`Server start at http://localhost:${port}`);
